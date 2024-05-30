@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const ItemCount = ({ stock }) => {
+const ItemCount = ({ stock, onAdd }) => {
   const [contador, setContador] = useState(1);
   const [itemStock, setItemStock] = useState(stock);
+  const [visible, setVisible] = useState(true);
+
   const incrementar = () => {
     if (contador < itemStock) {
       setContador(contador + 1);
@@ -13,11 +16,12 @@ const ItemCount = ({ stock }) => {
       setContador(contador - 1);
     }
   };
-  const onAdd = () => {
+  const addToCart = () => {
     if (contador <= itemStock) {
       setItemStock(itemStock - contador);
+      onAdd(contador);
       setContador(1);
-      console.log("Agregaste " + contador + " Productos al Carrito!");
+      setVisible(false);
     }
   };
   useEffect(() => {
@@ -31,8 +35,7 @@ const ItemCount = ({ stock }) => {
             <button
               type="button"
               className="btn bg-black text-white rounded-0"
-              onClick={decrementar}
-            >
+              onClick={decrementar}>
               {" "}
               -{" "}
             </button>
@@ -42,8 +45,7 @@ const ItemCount = ({ stock }) => {
             <button
               type="button"
               className="btn bg-black text-white rounded-0"
-              onClick={incrementar}
-            >
+              onClick={incrementar}>
               {" "}
               +{" "}
             </button>
@@ -52,13 +54,8 @@ const ItemCount = ({ stock }) => {
       </div>
       <div className="row my-1">
         <div className="col">
-          <button
-            type="button"
-            className="btn bg-black text-white text-uppercase rounded-0"
-            onClick={onAdd}
-          >
-            Agregar Al Carrito
-          </button>
+          {visible ?   <button type="button" className="btn bg-black text-white text-uppercase rounded-0" onClick={addToCart}> Agregar Al Carrito</button> : <Link to={"/cart"} className="btn bg-black text-white text-uppercase rounded-0" >Terminar mi compra
+            </Link> }
         </div>
       </div>
     </div>

@@ -1,15 +1,14 @@
-import ItemCarts from "./item";
+import Item from "./item"
 
 
-
-const ItemListGroup = ({items}) => {
+const ItemList = ({items}) => {
     return (
         <>
                 {items.map(product => (
-                <ItemCarts key={product.id} item={product} />
+                <Item key={product.id} item={product} />
                 ))}
         </>
     )
 }
 
-export default ItemListGroup;
+export default ItemList;

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const itemCars = ({ item }) => {
+const Item = ({ item }) => {
   return (
     <div className="col-md-3 text-center">
       <Link to={"/item/" + item.id} className="text-decoration-none">
@@ -9,7 +9,7 @@ const itemCars = ({ item }) => {
           <div className="card-body">
             <p className="card-text text-center text-uppercase">
               <b>{item.nombre}</b>
-              <br />${item.precio}
+              <br /><b>${item.precio}</b>
             </p>
           </div>
         </div>
@@ -18,4 +18,4 @@ const itemCars = ({ item }) => {
   );
 };
 
-export default itemCars;
+export default Item;
