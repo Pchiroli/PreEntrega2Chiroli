@@ -6,7 +6,6 @@ const ItemDetail = ({ items }) => {
   const {addItem} = useContext(CartContext);
   const onAdd = (quantity) => {
       addItem(items, quantity);
-      //console.log("agregaste " + quantity + " productos");
   }
   return (
     <div className="container">

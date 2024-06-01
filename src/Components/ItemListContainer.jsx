@@ -21,28 +21,10 @@ const ItemListContainer = () => {
         setVisible(false);
       }});
     }, [id]);
-  
-
-   /*  useEffect(() => {
-      const db = getFirestore();
-      const itemsCollection = collection (db, "items");
-      getDocs(itemsCollection).then(snapShot => {
-          if (snapShot.size > 0) {
-              setItems(snapShot.docs.map (item => ({id:item.id, ...item.data()})));
-          
-          }
-      });
-  }, []); */
-
-
-  return (
+    return (
     <div className="container">
       <div className="row my-5">
         {visible ? <Loading /> : <ItemList items={items} />}  
-       {/* <ItemList items={items} /> */}
-       {/*  <p>{items.nombre}</p>
-        <p><img src={items.imagen} alt={items.nombre} /></p>
-        <p>${items.precio}</p> */}
       </div>
     </div>
   );
